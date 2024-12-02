@@ -74,22 +74,25 @@ namespace ProjetoBD {
                     string endereco = Console.ReadLine();
                     Console.Write("Tipo (empresa/filial): ");
                     string tipo = Console.ReadLine();
-                    CreateFilial(new Filial { Nome = nome, Endereco = endereco, Tipo = tipo });
+                    Console.Write("ID: ");
+                    int id = int.Parse(Console.ReadLine());
+                    CreateFilial(new Filial(id, nome, endereco, tipo));
+
                     break;
                 case 2:
                     var filiais = ReadFiliais();
-                    foreach (var filial in filiais) filial.ExibirDetalhes();
+                    foreach (var filial in filiais) Console.WriteLine(filial.ToString());
                     break;
                 case 3:
                     Console.Write("ID da filial para atualizar: ");
-                    int id = int.Parse(Console.ReadLine());
+                    id = int.Parse(Console.ReadLine());
                     Console.Write("Novo nome: ");
                     string novoNome = Console.ReadLine();
                     Console.Write("Novo endereço: ");
                     string novoEndereco = Console.ReadLine();
                     Console.Write("Novo tipo (empresa/filial): ");
                     string novoTipo = Console.ReadLine();
-                    UpdateFilial(new Filial { Id = id, Nome = novoNome, Endereco = novoEndereco, Tipo = novoTipo });
+                    UpdateFilial(new Filial(id, novoNome, novoEndereco, novoTipo));
                     break;
                 case 4:
                     Console.Write("ID da filial para deletar: ");
@@ -99,7 +102,6 @@ namespace ProjetoBD {
             }
         }
 
-        // ---------- MENU PARA PRODUTO ----------
         static void MenuProduto(int operacao)
         {
             switch (operacao)
@@ -111,23 +113,29 @@ namespace ProjetoBD {
                     string categoria = Console.ReadLine();
                     Console.Write("Fornecedor: ");
                     string fornecedor = Console.ReadLine();
-                    CreateProduto(new Produto { Descricao = descricao, Categoria = categoria, Fornecedor = fornecedor });
+                    Console.Write("ID: ");
+                    int idP = int.Parse(Console.ReadLine());
+                    CreateProduto(new Produto(idP, descricao, categoria, fornecedor));
                     break;
+
                 case 2:
                     var produtos = ReadProdutos();
-                    foreach (var produto in produtos) produto.ExibirDetalhes();
+                    foreach (var produto in produtos)
+                        Console.WriteLine(produto.ToString());
                     break;
+
                 case 3:
                     Console.Write("ID do produto para atualizar: ");
-                    int id = int.Parse(Console.ReadLine());
+                    int idAtualizar = int.Parse(Console.ReadLine()); 
                     Console.Write("Nova descrição: ");
                     string novaDescricao = Console.ReadLine();
                     Console.Write("Nova categoria: ");
                     string novaCategoria = Console.ReadLine();
                     Console.Write("Novo fornecedor: ");
                     string novoFornecedor = Console.ReadLine();
-                    UpdateProduto(new Produto { Id = id, Descricao = novaDescricao, Categoria = novaCategoria, Fornecedor = novoFornecedor });
+                    UpdateProduto(new Produto(idAtualizar, novaDescricao, novaCategoria, novoFornecedor));
                     break;
+
                 case 4:
                     Console.Write("ID do produto para deletar: ");
                     int idDeletar = int.Parse(Console.ReadLine());
@@ -135,6 +143,7 @@ namespace ProjetoBD {
                     break;
             }
         }
+
 
         // ---------- MENU PARA FORNECEDOR ----------
         static void MenuFornecedor(int operacao)
@@ -148,23 +157,29 @@ namespace ProjetoBD {
                     string contato = Console.ReadLine();
                     Console.Write("Endereço: ");
                     string endereco = Console.ReadLine();
-                    CreateFornecedor(new Fornecedor { Nome = nome, Contato = contato, Endereco = endereco });
+                    Console.Write("ID: ");
+                    int idF = int.Parse(Console.ReadLine());
+                    CreateFornecedor(new Fornecedor(idF, nome, contato, endereco));
                     break;
+
                 case 2:
                     var fornecedores = ReadFornecedores();
-                    foreach (var fornecedor in fornecedores) fornecedor.ExibirDetalhes();
+                    foreach (var fornecedor in fornecedores)
+                        Console.WriteLine(fornecedor.ToString());
                     break;
+
                 case 3:
                     Console.Write("ID do fornecedor para atualizar: ");
-                    int id = int.Parse(Console.ReadLine());
+                    int idAtualizar = int.Parse(Console.ReadLine());
                     Console.Write("Novo nome: ");
                     string novoNome = Console.ReadLine();
                     Console.Write("Novo contato: ");
                     string novoContato = Console.ReadLine();
                     Console.Write("Novo endereço: ");
                     string novoEndereco = Console.ReadLine();
-                    UpdateFornecedor(new Fornecedor { Id = id, Nome = novoNome, Contato = novoContato, Endereco = novoEndereco });
+                    UpdateFornecedor(new Fornecedor(idAtualizar, novoNome, novoContato, novoEndereco));
                     break;
+
                 case 4:
                     Console.Write("ID do fornecedor para deletar: ");
                     int idDeletar = int.Parse(Console.ReadLine());
@@ -173,40 +188,84 @@ namespace ProjetoBD {
             }
         }
 
+
         // ---------- MENU PARA ESTOQUE ----------
         static void MenuEstoque(int operacao)
         {
             switch (operacao)
             {
-                case 1:
+                case 1: // Criar estoque
+                    Console.Write("ID do estoque: ");
+                    int idE = int.Parse(Console.ReadLine());
                     Console.Write("ID do produto: ");
-                    int produtoId = int.Parse(Console.ReadLine());
+                    int produtoId = 0;
+                    while (!int.TryParse(Console.ReadLine(), out produtoId) || produtoId <= 0)
+                    {
+                        Console.Write("ID inválido. Por favor, insira um valor positivo: ");
+                    }
+
                     Console.Write("ID da localização (filial): ");
-                    int localizacaoId = int.Parse(Console.ReadLine());
+                    int localizacaoId = 0;
+                    while (!int.TryParse(Console.ReadLine(), out localizacaoId) || localizacaoId <= 0)
+                    {
+                        Console.Write("ID inválido. Por favor, insira um valor positivo: ");
+                    }
+
                     Console.Write("Quantidade: ");
-                    decimal quantidade = decimal.Parse(Console.ReadLine());
+                    decimal quantidade = 0;
+                    while (!decimal.TryParse(Console.ReadLine(), out quantidade) || quantidade <= 0)
+                    {
+                        Console.Write("Quantidade inválida. Por favor, insira um valor positivo: ");
+                    }
+
                     Console.Write("Número do fornecedor: ");
                     string numeroFornecedor = Console.ReadLine();
+
                     Console.Write("Número do lote: ");
                     string numeroLote = Console.ReadLine();
-                    CreateEstoque(new Estoque { ProdutoId = produtoId, LocalizacaoId = localizacaoId, Quantidade = quantidade, NumeroFornecedor = numeroFornecedor, NumeroLote = numeroLote });
+
+                    // Definir data de entrada e validade
+                    DateTime dataEntrada = DateTime.Now;
+
+                    Console.Write("Data de validade (yyyy-MM-dd): ");
+                    DateTime dataValidade;
+                    while (!DateTime.TryParse(Console.ReadLine(), out dataValidade))
+                    {
+                        Console.Write("Data inválida. Por favor, insira uma data válida (yyyy-MM-dd): ");
+                    }
+
+                    CreateEstoque(new Estoque(idE, produtoId, localizacaoId, quantidade, numeroFornecedor, numeroLote, dataEntrada, dataValidade));
+
+
                     break;
-                case 2:
+
+                case 2: // Ler estoques
                     var estoques = ReadEstoque();
-                    foreach (var estoque in estoques) estoque.ExibirDetalhes();
+                    if (estoques.Count == 0)
+                    {
+                        Console.WriteLine("Nenhum estoque encontrado.");
+                    }
+                    else
+                    {
+                        foreach (var estoque in estoques)
+                            Console.WriteLine(estoque.ToString());
+                    }
                     break;
-                case 3:
-                    Console.Write("ID do estoque para atualizar: ");
-                    int id = int.Parse(Console.ReadLine());
-                    // Solicitar novos valores, similar ao MenuFilial
-                    break;
-                case 4:
+
+                case 4: // Deletar estoque
                     Console.Write("ID do estoque para deletar: ");
-                    int idDeletar = int.Parse(Console.ReadLine());
+                    int idDeletar = 0;
+                    while (!int.TryParse(Console.ReadLine(), out idDeletar) || idDeletar <= 0)
+                    {
+                        Console.Write("ID inválido. Por favor, insira um valor válido: ");
+                    }
                     DeleteEstoque(idDeletar);
                     break;
             }
         }
+
+
+
 
         // ---------- CRUD PARA FILIAL ----------
         static void CreateFilial(Filial filial)
