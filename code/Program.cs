@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 class Program
 {
     // String de conexão com o banco de dados
-    static string connectionString = "Server=sql10.freesqldatabase.com;Database=sql10747220;User=sql10747220;Password=sua_senha;";
+    static string connectionString = "Server=sql10.freesqldatabase.com;Database=sql10747220;User=sql10747220;Password=X6uMffvNxE;";
 
     static void Main(string[] args)
     {       
