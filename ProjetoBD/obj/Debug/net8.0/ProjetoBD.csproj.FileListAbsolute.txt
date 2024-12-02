@@ -1,0 +1,6 @@
+C:\Users\Casa\source\repos\samuelvaladaop25\estoqueBD\ProjetoBD\obj\Debug\net8.0\ProjetoBD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Casa\source\repos\samuelvaladaop25\estoqueBD\ProjetoBD\obj\Debug\net8.0\ProjetoBD.AssemblyInfoInputs.cache
+C:\Users\Casa\source\repos\samuelvaladaop25\estoqueBD\ProjetoBD\obj\Debug\net8.0\ProjetoBD.AssemblyInfo.cs
+C:\Users\Casa\source\repos\samuelvaladaop25\estoqueBD\ProjetoBD\obj\Debug\net8.0\ProjetoBD.csproj.CoreCompileInputs.cache
+C:\Users\Casa\source\repos\samuelvaladaop25\estoqueBD\ProjetoBD\obj\Debug\net8.0\ProjetoBD.sourcelink.json
+C:\Users\Casa\source\repos\samuelvaladaop25\estoqueBD\ProjetoBD\obj\Debug\net8.0\ProjetoBD.csproj.AssemblyReference.cache

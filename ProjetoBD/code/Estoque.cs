@@ -21,10 +21,10 @@
         DataValidade = dataValidade;
     }
 
-    public void ToString()
+    public new string ToString()
     {
-        Console.WriteLine($"ID: {Id}, ProdutoID: {ProdutoId}, LocalizaçãoID: {LocalizacaoId}, Quantidade: {Quantidade}, " +
+        return $"ID: {Id}, ProdutoID: {ProdutoId}, LocalizaçãoID: {LocalizacaoId}, Quantidade: {Quantidade}, " +
                           $"Número Fornecedor: {NumeroFornecedor}, Número Lote: {NumeroLote}, " +
-                          $"Data Fabricação: {DataFabricacao.ToShortDateString()}, Data Validade: {DataValidade.ToShortDateString()}");
+                          $"Data Fabricação: {DataFabricacao.ToShortDateString()}, Data Validade: {DataValidade.ToShortDateString()}";
     }
 }

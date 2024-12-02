@@ -13,8 +13,8 @@
         Tipo = tipo;
     }
 
-    public void ToString()
+    public new string ToString()
     {
-        Console.WriteLine($"ID: {Id}, Nome: {Nome}, Endereço: {Endereco}, Tipo: {Tipo}");
+        return $"ID: {Id}, Nome: {Nome}, Endereço: {Endereco}, Tipo: {Tipo}";
     }
 }

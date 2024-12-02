@@ -13,8 +13,8 @@ public class Fornecedor
         Endereco = endereco;
     }
 
-    public void ToString
+    public new string ToString()
     {
-        Console.WriteLine($"ID: {Id}, Nome: {Nome}, Contato: {Contato}, Endereço: {Endereco}");
+        return $"ID: {Id}, Nome: {Nome}, Contato: {Contato}, Endereço: {Endereco}";
     }
 }

@@ -13,8 +13,8 @@
         Fornecedor = fornecedor;
     }
 
-    public void ToString()
+    public new string ToString()
     {
-        Console.WriteLine($"ID: {Id}, Descrição: {Descricao}, Categoria: {Categoria}, Fornecedor: {Fornecedor}");
+        return $"ID: {Id}, Descrição: {Descricao}, Categoria: {Categoria}, Fornecedor: {Fornecedor}";
     }
 }
